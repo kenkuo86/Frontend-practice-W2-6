@@ -1,0 +1,64 @@
+Q1.說明三個HTML5裡的標籤作用
+●<main>
+拿來放整個頁面中最重要的內容，不可以被包含在任何其他tag裡面(body除外)，而且一個頁面中只能出現一次。
+用法：
+  <main> 所有重要且只會在這個頁面出現一次的內容 </main>
+●<mark>
+拿來包住要強調的文字，可以另外在CSS設定樣式。
+用法：
+  <p>這句話裡面的重點就是<mark>這裡</mark></p>
+  (CSS)
+  mark{ 
+  color: black;
+  background-color: yellow;                 
+  }
+  //這樣設定就會出現黃底黑字
+●<meter>
+https://www.w3schools.com/tags/tag_meter.asp
+用來設定出一段程度/進度條，有一些屬性值要設定：
+必須設定的屬性：value
+用法：
+  <meter value="2" min="0" max="10"></meter><br>
+  //在設定最大和最小值後把一個落在範圍內的值賦給value
+  也可以像這樣：
+  <meter value="0.6">60%</meter>
+  就會跑出一條60%的圖
+
+
+Q2.解釋盒模型(box model)
+盒模型由外而內是margin, border, padding, 跟content
+其中border擔任很關鍵的角色，作為margin跟padding計算的分界
+由border向外就是margin，這個部分不會吃到背景色
+由border向內就是padding，這個部分會吃到背景色
+
+而padding會不會壓縮到content的長寬就要由box-sizing決定
+box-sizing的預設是：
+box-sizing: content-box;
+這個時候content的長寬就不會被動到，padding會使整個element變化
+e.g.
+width:
+margin: 30px(兩邊各30)
+border: 1px;
+padding: 20px;(兩邊各20)
+content: 50px
+total element: 30*2 + 1*2 + 20*2 + 50 = 152
+
+但如果寫成box-sizing: border-box;
+此時即便有指定content的長寬，在設定padding後content的值一樣會被吃掉
+width:
+margin: 30px(兩邊各30)
+border: 1px;
+padding: 20px;(兩邊各20)
+content: 50px
+total element: 30*2 + 1*2 + 20*2 + (50 - 20*2) = 112
+
+Q3. display: inline, block 跟 inline-block 的差別
+block: 會直接占掉整行，下個元件會強制換行
+inline-block: 可以直接排到同一行，又保有可以自訂寬高的特性
+inline: 不能改寬高，所有東西都會塞在同一行
+
+Q4.position: static, relative, absolute 跟 fixed 的差別是什麼？
+static: 沒辦法更動位置，只能位在預設的位置
+relative: 相對於原本的定位
+absolute: 以上層作為定位參考，上層只能relative, absolute, 或fixed
+fixed: 卡在視窗的特定位置
